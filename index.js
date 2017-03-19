@@ -13,7 +13,8 @@ var stackdata = require('stacktrace-metadata')
 
 /**
  * > A simple TAP report producing plugin for [dush][] or anything based on it.
- * It returns a function that can be passed to dush's `.use` method.
+ * It returns a function that can be passed to dush's `.use` method. This plugin
+ * will also work for [minibase][] and [base][] mini frameworks for building robust apps.
  *
  * **Example**
  *
@@ -73,10 +74,19 @@ var stackdata = require('stacktrace-metadata')
  * // # fail  1
  * ```
  *
- * @param  {Object} `options` optional options, merged with `app.options` if exist
+ * @param  {Object} `options` optional options, merged with `app.options`,
+ *                            passed to [stacktrace-metadata][] and [find-callsite][]
  * @param  {Function} `options.writeLine` a logger function called on each line, default `console.log`
+ * @param  {Boolean} `options.cleanStack` if `false` won't clean stack trace from node internals,
+ *                                        [clean-stacktrace][]
+ * @param  {Boolean} `options.shortStack` if `false` full stack traces, otherwise they are just four
+ * @param  {Boolean} `options.showStack` if `false` the error.stack will be empty string
+ * @param  {Boolean} `options.relativePaths` if `false` paths in stack traces will be absolute,
+ *                                           [clean-stacktrace-relative-paths][]
+ * @param  {Function} `options.mapper` called on each line of the stack with `(line, index)` signature
+ * @param  {String} `options.cwd` current working directory, default `process.cwd()`
  * @return {Function} a plugin function that should be
- *                    passed to `.use` method of [minibase][] or [dush][]
+ *                    passed to `.use` method of [minibase][], [base][] or [dush][]
  * @api public
  */
 

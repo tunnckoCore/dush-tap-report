@@ -109,7 +109,12 @@
       "once",
       "standard-version",
       "verb",
-      "verb-generate-readme"
+      "verb-generate-readme",
+      "clean-stacktrace",
+      "clean-stacktrace-relative-paths",
+      "dush",
+      "find-callsite",
+      "stacktrace-metadata"
     ]
   }
 }

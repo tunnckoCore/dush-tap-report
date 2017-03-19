@@ -49,14 +49,20 @@ const dushTapReport = require('dush-tap-report')
 
 ## API
 
-### [tapReport](index.js#L83)
-> A simple TAP report producing plugin for [dush][] or anything based on it. It returns a function that can be passed to dush's `.use` method.
+### [tapReport](index.js#L93)
+> A simple TAP report producing plugin for [dush][] or anything based on it. It returns a function that can be passed to dush's `.use` method. This plugin will also work for [minibase][] and [base][] mini frameworks for building robust apps.
 
 **Params**
 
-* `options` **{Object}**: optional options, merged with `app.options` if exist    
+* `options` **{Object}**: optional options, merged with `app.options`, passed to [stacktrace-metadata][] and [find-callsite][]    
 * `options.writeLine` **{Function}**: a logger function called on each line, default `console.log`    
-* `returns` **{Function}**: a plugin function that should be passed to `.use` method of [minibase][] or [dush][]  
+* `options.cleanStack` **{Boolean}**: if `false` won't clean stack trace from node internals, [clean-stacktrace][]    
+* `options.shortStack` **{Boolean}**: if `false` full stack traces, otherwise they are just four    
+* `options.showStack` **{Boolean}**: if `false` the error.stack will be empty string    
+* `options.relativePaths` **{Boolean}**: if `false` paths in stack traces will be absolute, [clean-stacktrace-relative-paths][]    
+* `options.mapper` **{Function}**: called on each line of the stack with `(line, index)` signature    
+* `options.cwd` **{String}**: current working directory, default `process.cwd()`    
+* `returns` **{Function}**: a plugin function that should be passed to `.use` method of [minibase][], [base][] or [dush][]  
 
 **Example**
 
@@ -209,4 +215,8 @@ _Project scaffolded using [charlike][] cli._
 [paypalme-url]: https://www.paypal.me/tunnckoCore
 [paypalme-img]: https://img.shields.io/badge/paypal-donate-brightgreen.svg
 
+[clean-stacktrace-relative-paths]: https://github.com/tunnckocore/clean-stacktrace-relative-paths
+[clean-stacktrace]: https://github.com/tunnckocore/clean-stacktrace
 [dush]: https://github.com/tunnckocore/dush
+[find-callsite]: https://github.com/tunnckocore/find-callsite
+[stacktrace-metadata]: https://github.com/tunnckocore/stacktrace-metadata
