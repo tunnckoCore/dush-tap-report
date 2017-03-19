@@ -1,6 +1,6 @@
 {
   "name": "dush-tap-report",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A simple TAP report producer based on event system. A plugin for `dush` event emitter or anything based on it",
   "repository": "tunnckoCore/dush-tap-report",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
