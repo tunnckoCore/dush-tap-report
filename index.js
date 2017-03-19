@@ -157,6 +157,8 @@ module.exports = function tapReport (options) {
         log('# ok')
       }
     })
+
+    return app
   }
 }
 
