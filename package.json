@@ -48,6 +48,13 @@
       "dist/**"
     ]
   },
+  "nyc": {
+    "check-coverage": true,
+    "statements": 0,
+    "functions": 0,
+    "branches": 0,
+    "lines": 0
+  },
   "verb": {
     "run": true,
     "toc": {
@@ -63,19 +70,29 @@
       "list": [
         "always-done",
         "minibase",
-        "try-catch-core"
+        "try-catch-core",
+        "minibase-is-registered",
+        "minibase-create-plugin",
+        "stacktrace-metadata",
+        "clean-stacktrace"
       ],
-      "highlight": "always-done"
+      "highlight": "minibase"
     },
     "lint": {
       "reflinks": true
-    }
-  },
-  "nyc": {
-    "check-coverage": true,
-    "statements": 0,
-    "functions": 0,
-    "branches": 0,
-    "lines": 0
+    },
+    "reflinks": [
+      "always-done",
+      "async-done",
+      "base",
+      "charlike",
+      "commitizen",
+      "dezalgo",
+      "minibase",
+      "once",
+      "standard-version",
+      "verb",
+      "verb-generate-readme"
+    ]
   }
 }
