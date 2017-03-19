@@ -43,11 +43,6 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "standard": {
-    "ignore": [
-      "dist/**"
-    ]
-  },
   "nyc": {
     "check-coverage": true,
     "statements": 0,
