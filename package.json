@@ -37,7 +37,29 @@
   "files": [
     "index.js"
   ],
-  "keywords": [],
+  "keywords": [
+    "anything",
+    "baseplugin",
+    "dush",
+    "dushplugin",
+    "emitter",
+    "event",
+    "event-system",
+    "eventemitter",
+    "minibaseplugin",
+    "plugin",
+    "produce",
+    "producer",
+    "protocol",
+    "simple",
+    "simple-tap",
+    "system",
+    "tap",
+    "tap-producer",
+    "tape",
+    "test",
+    "test-anything-protocol"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
