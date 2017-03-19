@@ -169,7 +169,7 @@ $ npm install && npm test
 + [codementor/tunnckoCore](https://codementor.io/tunnckoCore)
 
 ## License
-Copyright © 2016-2017, [Charlike Mike Reagent](https://i.am.charlike.online). Released under the [MIT License](LICENSE).
+Copyright © 2017, [Charlike Mike Reagent](https://i.am.charlike.online). Released under the [MIT License](LICENSE).
 
 ***
 
@@ -180,10 +180,15 @@ _Project scaffolded using [charlike][] cli._
 [async-done]: https://github.com/gulpjs/async-done
 [base]: https://github.com/node-base/base
 [charlike]: https://github.com/tunnckocore/charlike
+[clean-stacktrace-relative-paths]: https://github.com/tunnckocore/clean-stacktrace-relative-paths
+[clean-stacktrace]: https://github.com/tunnckocore/clean-stacktrace
 [commitizen]: https://github.com/commitizen/cz-cli
 [dezalgo]: https://github.com/npm/dezalgo
+[dush]: https://github.com/tunnckocore/dush
+[find-callsite]: https://github.com/tunnckocore/find-callsite
 [minibase]: https://github.com/node-minibase/minibase
 [once]: https://github.com/isaacs/once
+[stacktrace-metadata]: https://github.com/tunnckocore/stacktrace-metadata
 [standard-version]: https://github.com/conventional-changelog/standard-version
 [verb-generate-readme]: https://github.com/verbose/verb-generate-readme
 [verb]: https://github.com/verbose/verb
@@ -215,8 +220,3 @@ _Project scaffolded using [charlike][] cli._
 [paypalme-url]: https://www.paypal.me/tunnckoCore
 [paypalme-img]: https://img.shields.io/badge/paypal-donate-brightgreen.svg
 
-[clean-stacktrace-relative-paths]: https://github.com/tunnckocore/clean-stacktrace-relative-paths
-[clean-stacktrace]: https://github.com/tunnckocore/clean-stacktrace
-[dush]: https://github.com/tunnckocore/dush
-[find-callsite]: https://github.com/tunnckocore/find-callsite
-[stacktrace-metadata]: https://github.com/tunnckocore/stacktrace-metadata
