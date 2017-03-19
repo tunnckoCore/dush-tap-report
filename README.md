@@ -10,12 +10,14 @@
 [![dependency status][david-img]][david-url]
 [![paypal donate][paypalme-img]][paypalme-url] 
 
-You might also be interested in [minibase](https://github.com/node-minibase/minibase#readme).
+You might also be interested in [dush][] - an event emitter system, extensible through plugins.
+Or [minibase][], a tiny framework based on `dush` for building robust and complex applications.
 
 ## Table of Contents
 - [Install](#install)
 - [Usage](#usage)
 - [API](#api)
+  * [tapReport](#tapreport)
 - [Related](#related)
 - [Contributing](#contributing)
 - [Building docs](#building-docs)
@@ -46,6 +48,73 @@ const dushTapReport = require('dush-tap-report')
 ```
 
 ## API
+
+### [tapReport](index.js#L83)
+> A simple TAP report producing plugin for [dush][] or anything based on it. It returns a function that can be passed to dush's `.use` method.
+
+**Params**
+
+* `options` **{Object}**: optional options, merged with `app.options` if exist    
+* `options.writeLine` **{Function}**: a logger function called on each line, default `console.log`    
+* `returns` **{Function}**: a plugin function that should be passed to `.use` method of [minibase][] or [dush][]  
+
+**Example**
+
+```js
+const reporter = require('dush-tap-report')
+const dush = require('dush')
+
+const app = dush()
+
+// provide a fake stats object
+// so `finish` to work correctly
+app.use(reporter({
+  stats: {
+    count: 3,
+    pass: 2,
+    fail: 1
+  }
+}))
+
+const item = {
+  index: 1,
+  title: 'some passing test'
+}
+const failing = {
+  index: 2,
+  title: 'failing test, sorry',
+  reason: new Error('some sad error here')
+}
+const item2 = {
+  index: 3,
+  title: 'awesome test is okey'
+}
+
+app.emit('start', app)
+// => 'TAP version 13'
+
+app.emit('pass', app, item)
+// =>
+// # :) some passing test
+// ok 1 - some passing test
+
+app.emit('fail', app, failing)
+// =>
+// # :( failing test, sorry
+// not ok 2 - failing test, sorry
+
+app.emit('pass', app, item2)
+// =>
+// # :) awesome test is okey
+// ok 3 - awesome test is okey
+
+app.emit('finish', app)
+// =>
+// 1..3
+// # tests 3
+// # pass  2
+// # fail  1
+```
 
 ## Related
 - [always-done](https://www.npmjs.com/package/always-done): Handle completion and errors with elegance! Support for streams, callbacks, promises, child processes, async/await and sync functions. A drop-in replacement… [more](https://github.com/hybridables/always-done#readme) | [homepage](https://github.com/hybridables/always-done#readme "Handle completion and errors with elegance! Support for streams, callbacks, promises, child processes, async/await and sync functions. A drop-in replacement for [async-done][] - pass 100% of its tests plus more")
@@ -140,3 +209,4 @@ _Project scaffolded using [charlike][] cli._
 [paypalme-url]: https://www.paypal.me/tunnckoCore
 [paypalme-img]: https://img.shields.io/badge/paypal-donate-brightgreen.svg
 
+[dush]: https://github.com/tunnckocore/dush

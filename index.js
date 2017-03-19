@@ -11,6 +11,75 @@ var util = require('util')
 var extend = require('extend-shallow')
 var stackdata = require('stacktrace-metadata')
 
+/**
+ * > A simple TAP report producing plugin for [dush][] or anything based on it.
+ * It returns a function that can be passed to dush's `.use` method.
+ *
+ * **Example**
+ *
+ * ```js
+ * const reporter = require('dush-tap-report')
+ * const dush = require('dush')
+ *
+ * const app = dush()
+ *
+ * // provide a fake stats object
+ * // so `finish` to work correctly
+ * app.use(reporter({
+ *   stats: {
+ *     count: 3,
+ *     pass: 2,
+ *     fail: 1
+ *   }
+ * }))
+ *
+ * const item = {
+ *   index: 1,
+ *   title: 'some passing test'
+ * }
+ * const failing = {
+ *   index: 2,
+ *   title: 'failing test, sorry',
+ *   reason: new Error('some sad error here')
+ * }
+ * const item2 = {
+ *   index: 3,
+ *   title: 'awesome test is okey'
+ * }
+ *
+ * app.emit('start', app)
+ * // => 'TAP version 13'
+ *
+ * app.emit('pass', app, item)
+ * // =>
+ * // # :) some passing test
+ * // ok 1 - some passing test
+ *
+ * app.emit('fail', app, failing)
+ * // =>
+ * // # :( failing test, sorry
+ * // not ok 2 - failing test, sorry
+ *
+ * app.emit('pass', app, item2)
+ * // =>
+ * // # :) awesome test is okey
+ * // ok 3 - awesome test is okey
+ *
+ * app.emit('finish', app)
+ * // =>
+ * // 1..3
+ * // # tests 3
+ * // # pass  2
+ * // # fail  1
+ * ```
+ *
+ * @param  {Object} `options` optional options, merged with `app.options` if exist
+ * @param  {Function} `options.writeLine` a logger function called on each line, default `console.log`
+ * @return {Function} a plugin function that should be
+ *                    passed to `.use` method of [minibase][] or [dush][]
+ * @api public
+ */
+
 module.exports = function tapReport (options) {
   return function tapReport_ (app) {
     app.options = extend({
